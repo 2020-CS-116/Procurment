@@ -158,6 +158,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         NewJFrame1 fram1=new NewJFrame1();
         fram1.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -174,8 +175,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        NewJFrame frame=new NewJFrame();
-        frame.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

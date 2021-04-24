@@ -60,6 +60,11 @@ public class NewJFrame4 extends javax.swing.JFrame {
         });
 
         jButton4.setText("CLOSE");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("VIEW ALL EMPLOYS");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +137,11 @@ public class NewJFrame4 extends javax.swing.JFrame {
         NewJFrame8 fram8=new NewJFrame8();
         fram8.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

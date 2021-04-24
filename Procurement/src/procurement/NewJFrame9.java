@@ -5,6 +5,14 @@
  */
 package procurement;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Junaid Butt
@@ -58,6 +66,11 @@ public class NewJFrame9 extends javax.swing.JFrame {
         });
 
         jButton4.setText("CLOSE");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setText("MANAGER ACCOOUNT");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,15 +137,64 @@ public class NewJFrame9 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        NewJFrame11 fram11=new NewJFrame11();
-        fram11.setVisible(true);
+        int lap=10;
+        int pen=20;
+        int book=20;
+        int sticky=30;
+        System.out.flush();
+        System.out.println("-Accessories-");
+        System.out.println("Laptop ="+lap);
+        System.out.println("Pen ="+pen);
+        System.out.println("Book ="+book);
+        System.out.println("Sticky notes ="+sticky);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        NewJFrame12 fram12=new NewJFrame12();
-        fram12.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            
+            ArrayList<Request> ad = new ArrayList<Request>();
+            BufferedReader ba = null;
+            Request e = null;
+            ba= new BufferedReader(new FileReader("Request.txt"));
+            String line;
+            try {
+                while ((line = ba.readLine()) != null) {
+                    String data[] = line.split(",");
+                    e = new Request();
+                    e.setEmp(data[0]);
+                    e.setCnic(data[1]);
+                    e.setPhone(data[2]);
+                    e.setreq(data[3]);
+                    e.setAmo(data[4]);
+                    
+                    
+                    ad.add(e);
+                }
+                System.out.println("All REQUESTS BY EMPLOYS-");
+                for(Request a: ad){
+                    
+                System.out.println(a.getEmp()+","+a.getCNIC()+","+a.getNum()+","+a.getrequest()+","+a.getamoub());
+                
+            }
+            ba.close();
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

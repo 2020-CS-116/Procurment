@@ -9,6 +9,13 @@ package procurement;
  *
  * @author Junaid Butt
  */
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class NewJFrame2 extends javax.swing.JFrame {
 
     /**
@@ -49,6 +56,11 @@ public class NewJFrame2 extends javax.swing.JFrame {
         });
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("LOGIN");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -119,9 +131,48 @@ public class NewJFrame2 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        NewJFrame9 fram9=new NewJFrame9();
-        fram9.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            String nam=jTextField4.getText();
+            String pas=jPasswordField1.getText();
+            ArrayList<Manager> ad = new ArrayList<Manager>();
+            BufferedReader be = null;
+            Manager f = null;
+            be = new BufferedReader(new FileReader("Manager.txt"));
+            String line;
+            try {
+                while ((line = be.readLine()) != null) {
+                    String data[] = line.split(",");
+                    f = new Manager();
+                    f.setMan(data[0]);
+                    f.setPas(data[1]);
+                    
+                    
+                    ad.add(f);
+                }
+                for(Manager a: ad){
+                    if(nam.equals(a.getMan())&& pas.equals(a.getpass()))
+                    {
+                
+                NewJFrame9 fram9=new NewJFrame9();
+                fram9.setVisible(true);
+                    }
+            }
+            be.close();
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

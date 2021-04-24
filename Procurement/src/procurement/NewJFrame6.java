@@ -5,6 +5,13 @@
  */
 package procurement;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -85,6 +92,11 @@ public class NewJFrame6 extends javax.swing.JFrame {
         });
 
         jButton3.setText("CLOSE");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,14 +172,109 @@ public class NewJFrame6 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+           String name=jTextField4.getText();
+           String emai=jTextField6.getText();
+            ArrayList<Employy> ad = new ArrayList<Employy>();
+            BufferedReader ba = null;
+            Employy e = null;
+            ba= new BufferedReader(new FileReader("Employdata.txt"));
+            String line;
+            try {
+                while ((line = ba.readLine()) != null) {
+                    String data[] = line.split(",");
+                    e = new Employy();
+                    e.setEmp(data[0]);
+                    e.setEamil(data[1]);
+                    e.setCnic(data[2]);
+                    e.setPhone(data[3]);
+                    e.setPass(data[4]);
+                    e.setAddress(data[5]);
+                    
+                    
+                    ad.add(e);
+                }
+          
+                for(Employy a: ad){
+                    if(name.equals(a.getEmp()) && emai.equals(a.getEmaiil()))
+                    {
+                        ad.remove(e);
+                        JOptionPane.showMessageDialog(null, "Deleted Successfully");
+                    }
+                    
+                    
+                
+                
+              
+            }
+            ba.close();
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         JOptionPane.showMessageDialog(null, "Deleted Successfully");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        NewJFrame7 fram7=new NewJFrame7();
+        try {
+            // TODO add your handling code here:
+           String name=jTextField4.getText();
+           String emai=jTextField6.getText();
+            ArrayList<Employy> ad = new ArrayList<Employy>();
+            BufferedReader ba = null;
+            Employy e = null;
+            ba= new BufferedReader(new FileReader("Employdata.txt"));
+            String line;
+            try {
+                while ((line = ba.readLine()) != null) {
+                    String data[] = line.split(",");
+                    e = new Employy();
+                    e.setEmp(data[0]);
+                    e.setEamil(data[1]);
+                    e.setCnic(data[2]);
+                    e.setPhone(data[3]);
+                    e.setPass(data[4]);
+                    e.setAddress(data[5]);
+                    
+                    
+                    ad.add(e);
+                }
+          
+                for(Employy a: ad){
+                    if(name.equals(a.getEmp()) && emai.equals(a.getEmaiil()))
+                    {
+                        NewJFrame7 fram7=new NewJFrame7();
         fram7.setVisible(true);
+                    }
+                    
+                    
+                
+                
+              
+            }
+            ba.close();
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

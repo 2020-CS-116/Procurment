@@ -5,6 +5,14 @@
  */
 package procurement;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Junaid Butt
@@ -44,6 +52,12 @@ public class NewJFrame3 extends javax.swing.JFrame {
 
         jTextField3.setText("Password:");
 
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -51,6 +65,11 @@ public class NewJFrame3 extends javax.swing.JFrame {
         });
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("LOGIN");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -119,9 +138,53 @@ public class NewJFrame3 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        NewJFrame13 fram13=new NewJFrame13();
+        try {
+            // TODO add your handling code here:
+            String namm=jTextField4.getText();
+            String passs=jPasswordField1.getText();
+            ArrayList<Employ> ad = new ArrayList<Employ>();
+            BufferedReader ba = null;
+            Employ e = null;
+            ba= new BufferedReader(new FileReader("Employ.txt"));
+            String line;
+            try {
+                while ((line = ba.readLine()) != null) {
+                    String data[] = line.split(",");
+                    e = new Employ();
+                    e.setEmp(data[0]);
+                    e.setPass(data[1]);
+                    
+                    
+                    ad.add(e);
+                }
+                for(Employ a: ad){
+                    if(namm.equals(a.getEmp())&& passs.equals(a.getpass()))
+                    {
+                
+                NewJFrame13 fram13=new NewJFrame13();
         fram13.setVisible(true);
+                    }
+            }
+            ba.close();
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments

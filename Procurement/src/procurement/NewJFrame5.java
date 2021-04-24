@@ -5,6 +5,12 @@
  */
 package procurement;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -163,10 +169,38 @@ public class NewJFrame5 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String name=jTextField8.getText();
+        String ema=jTextField9.getText();
+        String cn=jTextField10.getText();
+        String phone=jTextField11.getText();
+        String pass=jPasswordField1.getText();
+        String addres=jTextArea1.getText();
+        ArrayList<Employy> ed = new ArrayList<Employy>();
+        Employy e=new Employy();
+        e.setEmp(name);
+        e.setEamil(ema);
+        e.setCnic(cn);
+        e.setPhone(phone);
+        e.setPass(pass);
+        e.setAddress(addres);
+        ed.add(e);
+        try {
+            FileWriter writeobj=new FileWriter("Employdata.txt");
+            int size=ed.size();
+            for(Employy i: ed)
+            {
+               writeobj.write(i.getEmp()+","+i.getEmaiil()+","+i.getCNIC()+","+i.getNum()+","+i.getpass()+","+i.getAddress());
+            }
+            
+            writeobj.close();
+        } catch (IOException ex) {
+            Logger.getLogger(NewJFrame5.class.getName()).log(Level.SEVERE, null, ex);
+        }
         JOptionPane.showMessageDialog(null, "Added Successfully");
     }//GEN-LAST:event_jButton1ActionPerformed
 

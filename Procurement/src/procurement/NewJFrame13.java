@@ -52,6 +52,11 @@ public class NewJFrame13 extends javax.swing.JFrame {
         });
 
         jButton5.setText("CLOSE");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setText("Choose Option:");
 
@@ -103,9 +108,20 @@ public class NewJFrame13 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        NewJFrame11 fram11=new NewJFrame11();
-        fram11.setVisible(true);
+        int lap=10;
+        int pen=20;
+        int book=20;
+        int sticky=30;
+        System.out.println("Laptop ="+lap);
+        System.out.println("Pen ="+pen);
+        System.out.println("Book ="+book);
+        System.out.println("Sticky notes ="+sticky);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
